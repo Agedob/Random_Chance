@@ -6,19 +6,27 @@
     </head>
     <body>
         <script>
+            var count = 0; 
+            var tot = 0;
             function slots(I){
                 for(var i = 1; i <= I; i++){
+             var win = Math.floor(Math.random() * 50) + 50;
+            if(count == 500){
+                console.log(tot / 4);
+               return count;
+             }
                 var chance = Math.ceil(Math.random() * 100);
-                console.log(chance)
                     if(chance == 1){
-                        console.log("You had", (I-i), "games left you won.")
-                        return Math.floor(Math.random() * 50) + 50 + (I-i);
+                        count = count + 1;
+                        tot = tot + win;
+                        slots(win + (I-i));
                     }
-                    console.log("You have", I - i, "chances left.");
+                    // console.log("You have", I - i, "chances left.");
                 }
-                return 0;
+                console.log(tot / 4);
+                return count;
             }
-          console.log(slots(5));
+          console.log(slots(100));
         </script>
     </body>
 
